@@ -43,19 +43,20 @@ void main(void)
   __bis_SR_register(GIE);//разрешаем прерывания 
   
   for(int i = 0;i<1;++i)
-{
-__delay_cycles(100000);
-SendByte(0x58,1);
-__delay_cycles(100000);
-SendByte(0x59,1);
-__delay_cycles(100000);
-SendByte(0x69,1);
-__delay_cycles(100000);
-SendByte(0x6A,1);
+    {}
+    __delay_cycles(100000);
+    SendByte(0x58,1);
+    __delay_cycles(100000);
+    SendByte(0x59,1);
+    __delay_cycles(100000);
+    SendByte(0x69,1);
+    __delay_cycles(100000);
+    SendByte(0x6A,1);
+    }
+
 }
 
 
-}
 void LCM_init(void)
 {
  P1DIR |= (RS+E+D4+D5+D6+D7);//делаем все ножки на выход
@@ -112,8 +113,11 @@ void SendByte(char ByteToSend,char isData)
  else P1OUT &= ~RS;  
  
  P1OUT |= ((ByteToSend & 0x0F)<<4);
-pulse();
+ 
+ pulse();
 }   
+
+
 void timerA(void)
 {
 overflows++;
